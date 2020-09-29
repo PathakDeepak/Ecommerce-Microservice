@@ -1,5 +1,6 @@
 package com.client.ui.controller;
 
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -47,8 +48,9 @@ public class HomeController {
 			int items = user.getProductList().size();
 			model.addAttribute("items", items);
 		}
-		model.addAttribute("categoryList", categoryService.listCategory());
-		//model.addAttribute("productList", productService.listProduct());
+		List<Product> productList = productService.listProduct();
+		//model.addAttribute("categoryList", categoryService.listCategory());
+		model.addAttribute("productList", productList);
 		return "index";
 		
 	}
