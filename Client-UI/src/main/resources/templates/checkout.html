@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+  <head th:insert="fragments.html :: headerfiles">
+    
+  </head>
+  <title>Daily Shop | Checkout Page</title>
+  <body>  
+   <!-- wpf loader Two -->
+    <div id="wpf-loader-two">          
+      <div class="wpf-loader-two-inner">
+        <span>Loading</span>
+      </div>
+    </div> 
+    <!-- / wpf loader Two -->       
+ <!-- SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
+  <!-- END SCROLL TOP BUTTON -->
+
+
+  <!-- Start header section -->
+  <header th:insert="fragments.html :: bodyHeader"></header>
+  <!-- / header section -->
+  <!-- menu -->
+  <header th:insert="fragments.html :: bodyNav"></header>
+  <!-- / menu -->  
+ 
+  <!-- catg header banner section -->
+  <section id="aa-catg-head-banner">
+    <img th:src="@{~/img/fashion/fashion-header-bg-8.jpg}" alt="fashion img">
+    <div class="aa-catg-head-banner-area">
+     <div class="container">
+      <div class="aa-catg-head-banner-content">
+        <h2>Checkout Page</h2>
+        <ol class="breadcrumb">
+          <li><a href="index.html">Home</a></li>                   
+          <li class="active">Checkout</li>
+        </ol>
+      </div>
+     </div>
+   </div>
+  </section>
+  <!-- / catg header banner section -->
+
+ <!-- Cart view section -->
+ <section id="checkout">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+        <div class="checkout-area">
+          <form action="" th:action="@{/profile/OrderConfirm}" method="post" th:object="${order}">
+            <div class="row">
+              <div class="col-md-8">
+                <div class="checkout-left">
+                  <div class="panel-group" id="accordion">
+                    <!-- Coupon section -->
+                    <div class="panel panel-default aa-checkout-coupon">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                            Have a Coupon?
+                          </a>
+                        </h4>
+                      </div>
+                      <div id="collapseOne" class="panel-collapse collapse in">
+                        <div class="panel-body">
+                          <input type="text" placeholder="Coupon Code" class="aa-coupon-code">
+                          <input type="submit" value="Apply Coupon" class="aa-browse-btn">
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Shipping Address -->
+                    <div class="panel panel-default aa-checkout-billaddress">
+                      <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                            Shippping Address
+                          </a>
+                        </h4>
+                      </div>
+                      <div id="collapseFour" class="panel-collapse collapse">
+                        <div class="panel-body">
+                         <div class="row">
+                            <div class="col-md-6">
+                              <div class="aa-checkout-single-bill">
+                                <input type="text" placeholder="First Name*" id="firstName">
+                              </div>                             
+                            </div>
+                            <div class="col-md-6">
+                              <div class="aa-checkout-single-bill">
+                                <input type="text" placeholder="Last Name*" id="lastName">
+                              </div>
+                            </div>
+                          </div> 
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="aa-checkout-single-bill">
+                                <input type="email" placeholder="Email Address*" id="email">
+                              </div>                             
+                            </div>
+                          </div> 
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="aa-checkout-single-bill">
+                                <textarea cols="8" rows="3" th:field="*{address}">Address*</textarea>
+                              </div>                             
+                            </div>                            
+                          </div>   
+                          <div class="row">
+                            <div class="col-md-12">
+                              <div class="aa-checkout-single-bill">
+                                <select th:field="*{country}">
+                                  <option value="None">Select Your Country</option>
+                                  <option value="Australia">Australia</option>
+                                  <option value="Afganistan">Afganistan</option>
+                                  <option value="Bangladesh">Bangladesh</option>
+                                  <option value="Belgium">Belgium</option>
+                                  <option value="Brazil">Brazil</option>
+                                  <option value="Canada">Canada</option>
+                                  <option value="China">China</option>
+                                  <option value="Denmark">Denmark</option>
+                                  <option value="Egypt">Egypt</option>
+                                  <option value="India">India</option>
+                                  <option value="Iran">Iran</option>
+                                  <option value="Israel">Israel</option>
+                                  <option value="Mexico">Mexico</option>
+                                  <option value="UAE">UAE</option>
+                                  <option value="UK">UK</option>
+                                  <option value="USA">USA</option>
+                                </select>
+                              </div>                             
+                            </div>                            
+                          </div>
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="aa-checkout-single-bill">
+                                <input type="text" placeholder="State*" th:field="*{state}">
+                              </div>                             
+                            </div>
+                            <div class="col-md-6">
+                              <div class="aa-checkout-single-bill">
+                                <input type="text" placeholder="Postcode / ZIP*" th:field="*{zip}">
+                              </div>
+                            </div>
+                          </div> 
+                           <!-- <div class="row">
+                            <div class="col-md-12">
+                              <div class="aa-checkout-single-bill">
+                                <textarea cols="8" rows="3">Special Notes</textarea>
+                              </div>                             
+                            </div>                            
+                          </div> -->              
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="checkout-right">
+                  <h4>Order Summary</h4>
+                  <div class="aa-order-summary-area">
+                    <table class="table table-responsive">
+                      <thead>
+                        <tr>
+                          <th>Product</th>
+                          <th>Total</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr th:each="product : ${user.productList}">
+                          <td th:text="${product.productName}"> <strong> x  1</strong></td>
+                          <td th:text="'$ '+${product.productPrice}"></td>
+                        </tr>
+                      </tbody>
+                      <tfoot>
+                        <!-- <tr>
+                          <th>Subtotal</th>
+                          <td>$750</td>
+                        </tr>
+                         <tr>
+                          <th>Tax</th>
+                          <td>$35</td>
+                        </tr> -->
+                         <tr>
+                          <th>Total</th>
+                          <td th:text="${total}"></td>
+                        </tr>
+                      </tfoot>
+                    </table>
+                  </div>
+                  <h4>Payment Method</h4>
+                  <div class="aa-payment-method">                    
+                    <label for="cashdelivery"><input type="radio" id="cashdelivery" name="optionsRadios"> Cash on Delivery </label>
+                    <label for="paypal"><input type="radio" id="paypal" name="optionsRadios" checked> Via Paypal </label>
+                    <img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg" border="0" alt="PayPal Acceptance Mark">    
+                    <input type="submit" value="Place Order" class="aa-browse-btn">                
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <!-- / Cart view section -->
+
+  <!-- footer -->  
+  <header th:insert="footer.html :: footer"></header>
+  <!-- / footer -->
+  <!-- Login Modal -->  
+  <header th:insert="footer.html :: login"></header>
+    
+  </body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+  <head th:insert="fragments.html :: headerfiles">
+    
+  </head>
+  <title>Daily Shop | Account Page</title>
+  <body>
+  
+   <!-- wpf loader Two -->
+    <div id="wpf-loader-two">          
+      <div class="wpf-loader-two-inner">
+        <span>Loading</span>
+      </div>
+    </div> 
+    <!-- / wpf loader Two -->       
+ <!-- SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
+  <!-- END SCROLL TOP BUTTON -->
+
+
+  <!-- Start header section -->
+  <header th:insert="fragments.html :: bodyHeader"></header>
+  <!-- / header section -->
+  <!-- menu -->
+  <header th:insert="fragments.html :: bodyNav"></header>
+  <!-- / menu -->  
+ 
+  <!-- catg header banner section -->
+  <section id="aa-catg-head-banner">
+    <img th:src="@{~/img/fashion/fashion-header-bg-8.jpg}" alt="fashion img">
+    <div class="aa-catg-head-banner-area">
+     <div class="container">
+      <div class="aa-catg-head-banner-content">
+        <h2>Account Page</h2>
+        <ol class="breadcrumb">
+          <li><a href="index.html">Home</a></li>                   
+          <li class="active">Account</li>
+        </ol>
+      </div>
+     </div>
+   </div>
+  </section>
+  <!-- / catg header banner section -->
+
+ <!-- Cart view section -->
+ <section id="aa-myaccount">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+        <div class="aa-myaccount-area">         
+            <div class="row">
+              <div class="col-md-6">
+                <div class="aa-myaccount-login">
+                <h4>Login</h4>
+                 <form th:action="@{/login}" method="post" class="aa-login-form" th:object="${user}">
+                  <label for="">Email address<span>*</span></label>
+                   <input type="text" placeholder="email" id="email" name="email">
+                   <label for="">Password<span>*</span></label>
+                    <input type="password" placeholder="Password" id="password" name="password">
+                    <button type="submit" class="aa-browse-btn">Login</button>
+                    <label class="rememberme" for="rememberme"><input type="checkbox" id="rememberme"> Remember me </label>
+                    <p class="aa-lost-password"><a href="#">Lost your password?</a></p>
+                  </form>
+                </div>
+              </div>
+              
+              <div class="col-md-6" >
+                <div class="aa-myaccount-register">                 
+                 <h4>Register</h4>
+                 <form th:action="@{/signup}" method="post" class="aa-login-form" th:object="${user}">
+                 	<label for="">First Name<span>*</span></label>
+                    <input type="text" placeholder="First Name" id="firstName" name="firstName">
+                    <label for="">Last Name<span>*</span></label>
+                    <input type="text" placeholder="Last Name" id="lastName" name="lastName">
+                    <label for="">Email address<span>*</span></label>
+                    <input type="text" placeholder="email" id="email" name="email">
+                    <label for="">Password<span>*</span></label>
+                    <input type="password" placeholder="Password" id="password" name="password">
+                    <button type="submit" class="aa-browse-btn">Register</button>                    
+                  </form>
+                </div>
+              </div>
+            </div>          
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <!-- / Cart view section -->
+
+  <!-- footer -->  
+  <header th:insert="footer.html :: footer"></header>
+  <!-- / footer -->
+  <!-- Login Modal -->  
+  <header th:insert="footer.html :: login"></header>
+  
+
+  </body>
+</html>

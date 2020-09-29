@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
+  <head th:insert="fragments.html :: headerfiles">
+    
+  </head>
+  
+  
+  
+  <title>Daily Shop | Product</title>
+  <!-- !Important notice -->
+  <!-- Only for product page body tag have to added .productPage class -->
+  <body  class="productPage">  
+   <!-- wpf loader Two -->
+    <div id="wpf-loader-two">          
+      <div class="wpf-loader-two-inner">
+        <span>Loading</span>
+      </div>
+    </div> 
+    <!-- / wpf loader Two -->       
+ <!-- SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#"><i class="fa fa-chevron-up"></i></a>
+  <!-- END SCROLL TOP BUTTON -->
+
+
+  <!-- Start header section -->
+<header th:insert="fragments.html :: bodyHeader"></header>
+  
+  <!-- / header section -->
+  <!-- menu -->
+  <header th:insert="fragments.html :: bodyNav"></header>
+  
+  <!-- / menu -->  
+ 
+  <!-- catg header banner section -->
+  <section id="aa-catg-head-banner">
+   <img th:src="@{~/img/fashion/fashion-header-bg-8.jpg}" alt="fashion img">
+   <div class="aa-catg-head-banner-area">
+     <div class="container">
+      <div class="aa-catg-head-banner-content">
+        <h2>PRODUCT</h2>
+      </div>
+     </div>
+   </div>
+  </section>
+  <!-- / catg header banner section -->
+
+  <!-- product category -->
+  <section id="aa-product-category">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9 col-md-9 col-sm-8 col-md-push-3">
+          <div class="aa-product-catg-content">
+            <div class="aa-product-catg-head">
+              <div class="aa-product-catg-head-right">
+                <a id="grid-catg" href="#"><span class="fa fa-th"></span></a>
+                <a id="list-catg" href="#"><span class="fa fa-list"></span></a>
+              </div>
+            </div>
+            <div class="aa-product-catg-body">
+              <ul class="aa-product-catg" th:each="product : ${productList}">
+                <!-- start single product item -->
+                <li>
+                  <figure>
+                    <a class="aa-product-img" href="#"><img th:src="@{~/img/women/girl-1.png}" alt="polo shirt img"></a>
+                    <a class="aa-add-card-btn"href="#" th:href="@{'~/profile/addToCart/' + ${product.productId}}"><span class="fa fa-shopping-cart"></span>Add To Cart</a>
+                    <figcaption>
+                      <h4 class="aa-product-title" th:text="${product.productName}"><a href="#"></a></h4>
+                      <span class="aa-product-price" th:text="${product.productPrice}"></span><span class="aa-product-price"><del>$65.50</del></span>
+                      <p class="aa-product-descrip" th:text="${product.productDescription}"></p>
+                    </figcaption>
+                  </figure>                         
+                  <!-- product badge -->
+                  <span class="aa-badge aa-sale" href="#">SALE!</span>
+                </li>
+                
+               
+              </ul>
+              <!-- quick view modal -->                  
+              
+              <!-- / quick view modal -->   
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-4 col-md-pull-9">
+          <aside class="aa-sidebar">
+            <!-- single sidebar -->
+            <div class="aa-sidebar-widget" >
+              <h3>Category</h3>
+              <ul class="aa-catg-nav">
+              	 <li><a href="#" th:href="@{/allProduct}">All Products</a></li>
+              </ul>
+              <ul class="aa-catg-nav" th:each="category : ${categoryList}">
+                <li><a href="" th:text="${category.categoryName}" th:href="@{'/getProduct/' + ${category.categoryId}}"></a></li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+       
+      </div>
+    </div>
+  </section>
+  <!-- / product category -->
+
+
+  <!-- footer -->  
+  <header th:insert="footer.html :: footer"></header>
+  <!-- / footer -->
+  <!-- Login Modal -->  
+  <header th:insert="footer.html :: login"></header>
+
+
+  </body>
+</html>
