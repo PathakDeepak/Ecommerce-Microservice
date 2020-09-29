@@ -1,0 +1,12 @@
+zuul:
+  prefix: /api
+  routes:
+    orders-microservice:
+      path: /orders-microservice/**
+      url: http://localhost:3002
+    users-microservice:
+      path: /users-microservice/**
+      url: http://localhost:3003
+    products-microservice:
+      path: /products-microservice/**
+      url: http://localhost:3001
