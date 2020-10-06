@@ -195,25 +195,7 @@ public class ProfileController {
 		return mv;
 	}
 	
-	@GetMapping("continue-shopping")
-	public ModelAndView continueShopping(HttpSession session) {
-		ModelAndView mv = new ModelAndView("index");
-		Long sessionId = (Long) session.getAttribute("MY_SESSION");
-		if (sessionId == null) {
-			mv = new ModelAndView("account");
-			return mv;
-		}
-		mv.addObject("userId",sessionId);
-		User user = userService.getUser(sessionId);
-		
-		//after checkout remove product from user cart
-		List<Product> productList = new ArrayList<Product>();
-		user.setProductList(productList);
-		userService.updateList(user);
-		int items = user.getProductList().size();
-		mv.addObject("items", items);
-		return mv;
-	}
+	
 	
 
 }

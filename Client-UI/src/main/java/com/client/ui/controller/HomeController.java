@@ -1,6 +1,7 @@
 package com.client.ui.controller;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -144,6 +145,9 @@ public class HomeController {
 	public String logout(Model model, HttpServletRequest request) {
 		model.addAttribute("condition", true);
 		request.getSession().invalidate();
+		List<Product> productList = productService.listProduct();
+		//model.addAttribute("categoryList", categoryService.listCategory());
+		model.addAttribute("productList", productList);
 		return "index";
 		
 	}
@@ -159,6 +163,29 @@ public class HomeController {
 		}
 		return mv;
 		
+	}
+	
+	@GetMapping("continue-shopping")
+	public ModelAndView continueShopping(HttpSession session) {
+		ModelAndView mv = new ModelAndView("index");
+		Long sessionId = (Long) session.getAttribute("MY_SESSION");
+		if (sessionId == null) {
+			mv = new ModelAndView("account");
+			return mv;
+		}
+		mv.addObject("userId",sessionId);
+		User user = userService.getUser(sessionId);
+		
+		//after checkout remove product from user cart
+		List<Product> productList = new ArrayList<Product>();
+		user.setProductList(productList);
+		userService.updateList(user);
+		int items = user.getProductList().size();
+		mv.addObject("items", items);
+		List<Product> productList2 = productService.listProduct();
+		//model.addAttribute("categoryList", categoryService.listCategory());
+		mv.addObject("productList", productList2);
+		return mv;
 	}
 	
 
